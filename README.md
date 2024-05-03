@@ -28,18 +28,4 @@ The difficulty of a move is calculated from the 18-element move vector with a fe
 
 Because the model is initialized randomly, the initially determined optimal sequences are also random, and therefore completely incorrect. Since the optimal sequence gets updated as the model is trained, it converges to sequences that are logically consistent with the assigned grades of the climbs, effectively learning how to climb. 
 
-The difficulty of any given climbing problem is represented by a number. The exact number and how it is presented is different in the U.S. than in Europe, but, ultimately, both provide similar information. A linear increase in the number characterizing the difficulty of a climb does not correspond to a linear increase in its difficulty: it corresponds to an exponential increase. Climbers have a heuristic formula for determining the difficulty of a climb from the difficulty of its component sequences. If you create a new climb that consists of linking together two climbs of difficulty $x$, then the difficulty of the new climb is said to be $x+2$. Thus, the linearized difficulty of a climb can be represented as an exponential function $D_{lin} \propto \times 2^{D/2}$, where $D$ is the assigned difficulty scores to the climb and $D_{lin}$ is a linearized difficulty score. In Step 4 of the training process, the linearized difficulty score is used for calculating the loss.
-
-# Data Used
-
-Limit myself to moonboard 2016 climbs. Taken from these fool's github page.Many more lower grade climbs. But, note that the choice of loss function and definition of the climb difficulties naturally gives (exponentially) more weight to harder climbs. 
-
-Furthermore, augment the data by reflecting each problem about the central axis of the board.
-
-
-# Future Directions
-
-
-The algorithm right now does not factor in the position of your feet when doing a move. This would make action space too large. 
-
-More data, by combining climbs from more than just the 2016 set. Could even go to other board systems. Would be a natural way to move forward. 
+The difficulty of any given climbing problem is represented by a number. The exact number and how it is presented is different in the U.S. than in Europe, but, ultimately, both provide similar information. A linear increase in the number characterizing the difficulty of a climb does not correspond to a linear increase in its difficulty: it corresponds to an exponential increase. Climbers have a heuristic formula for determining the difficulty of a climb from the difficulty of its component sequences. If you create a new climb that consists of linking together two climbs of difficulty $x$, then the difficulty of the new climb is said to be $x+2$. Thus, the linearized difficulty of a climb can be represented as an exponential function $D_{lin} \propto 2^{D/2}$, where $D$ is the assigned difficulty scores to the climb and $D_{lin}$ is a linearized difficulty score. In Step 4 of the training process, the linearized difficulty score is used for calculating the loss.
